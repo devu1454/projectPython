@@ -1,0 +1,25 @@
+name: pytest_api.py
+#tfytdrt
+on:
+  push:
+    branches:
+        - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9  # Replace 'x' with your desired Python version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install pytest-html
+    - name: Run api on pytest
+      run: pytest -v -s test1.py
